@@ -17,7 +17,7 @@ This will create the Docker network called planetswebappnetwork, then build a SQ
 container called planetswebapp_container, connected on planetswebappnetwork. It is important that planetsdb_container should be running and have completed setup before the web app container
 runs as otherwise the code-first generation of the database will fail.
 
-Assuming either of the above methods have been used, open your browser and navigate to port 5000 to use the app.
+Assuming either of the above methods have been used, open your browser and navigate to localhost port 5000 to use the app.
 
 **Visual Studio & IIS:**
 The app can also be run by opening the solution in Visual Studio and running via IIS.
