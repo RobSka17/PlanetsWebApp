@@ -1,0 +1,152 @@
+﻿@model List<Planet>
+@{
+    ViewData["Title"] = "Planets of the Solar System";
+}
+
+<div style="color: white; padding: 2%;">
+    <div class="row">
+        <div class="col">
+            <div id="planetsDiv">
+                <menu style="list-style:none">
+                    @switch(ViewData["OrderBy"])
+                    {
+                        default:
+                            foreach(Planet planet in Model.OrderBy(p => p.SunDistance))
+                            {
+                                <li id="@planet.Name.ToLower()Item" class="planet-item">@planet.Name</li>
+                            }
+                            break;
+                        case "sunDistance":
+                            foreach(Planet planet in Model.OrderBy(p => p.SunDistance))
+                            {
+                                <li id="@planet.Name.ToLower()Item" class="planet-item">@planet.Name</li>
+                            }
+                            break;
+                        case "mass":
+                            foreach(Planet planet in Model.OrderBy(p => p.Mass))
+                            {
+                                <li id="@planet.Name.ToLower()Item" class="planet-item">@planet.Name</li>
+                            }
+                            break;
+                        case "diameter":
+                            foreach(Planet planet in Model.OrderBy(p => p.Diameter))
+                            {
+                                <li id="@planet.Name.ToLower()Item" class="planet-item">@planet.Name</li>
+                            }
+                            break;
+                    }
+                </menu>
+            </div>
+        </div>
+        <div class="col">
+            <div id="planetDetails" class="planet-details">
+                <div class="row">
+                    <div class="col">
+                        <img id="planetImg" src="" style="max-width:25vw; height:auto;" />
+                    </div>
+                    <div class="col">
+                        <h4 id="planetName"></h4>
+                        <span id="planetInfo"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#mercuryItem").click(function () {
+                HighlightSelected($(this));
+                $.ajax({
+                    url: "Planets/Details?name=Mercury", success: function (result) {
+                        GetPlanetDetails(result);
+                    }
+                });
+            });
+            $("#venusItem").click(function () {
+                HighlightSelected($(this));
+                $.ajax({
+                    url: "Planets/Details?name=Venus", success: function (result) {
+                        GetPlanetDetails(result);
+                    }
+                });
+            });
+            $("#earthItem").click(function () {
+                HighlightSelected($(this));
+                $.ajax({
+                    url: "Planets/Details?name=Earth", success: function (result) {
+                        GetPlanetDetails(result);
+                    }
+                });
+            });
+            $("#marsItem").click(function () {
+                HighlightSelected($(this));
+                $.ajax({
+                    url: "Planets/Details?name=Mars", success: function (result) {
+                        GetPlanetDetails(result);
+                    }
+                });
+            });
+            $("#jupiterItem").click(function () {
+                HighlightSelected($(this));
+                $.ajax({
+                    url: "Planets/Details?name=Jupiter", success: function (result) {
+                        GetPlanetDetails(result);
+                    }
+                });
+            });
+            $("#saturnItem").click(function () {
+                HighlightSelected($(this));
+                $.ajax({
+                    url: "Planets/Details?name=Saturn", success: function (result) {
+                        GetPlanetDetails(result);
+                    }
+                });
+            });
+            $("#uranusItem").click(function () {
+                HighlightSelected($(this));
+                $.ajax({
+                    url: "Planets/Details?name=Uranus", success: function (result) {
+                        GetPlanetDetails(result);
+                    }
+                });
+            });
+            $("#neptuneItem").click(function () {
+                HighlightSelected($(this));
+                $.ajax({
+                    url: "Planets/Details?name=Neptune", success: function (result) {
+                        GetPlanetDetails(result);
+                    }
+                });
+            });
+        })
+
+        function HighlightSelected(item) {
+            $(".planet-item-selected").attr("class", "planet-item");
+            $(".planet-item").each(function () {
+                if ($(this).attr("id") == item.attr("id")) {
+                    $(this).attr("selected", "selected");
+                    $(this).attr("class", "planet-item-selected");
+                }
+            });
+        }
+
+        function GetPlanetDetails(result) {
+            if (result != null) {
+                $("#planetDetails").fadeOut("fast", function () {
+                    $("#planetImg").attr("src", result.imagePath);
+                    $("#planetImg").on("load", function () {
+                        $("#planetName").text(result.name);
+                        $("#planetInfo").text("Mass: " + result.massDisplay + " kg\n Diameter: " + result.diameter + " km\n Distance from Sun: " + result.sunDistance + " km");
+                        $("#planetDetails").fadeIn();
+                    });
+                });
+            }
+            else {
+                console.error("Couldn't retrieve planet data. Result from GET request was null.");
+            }
+        }
+    </script>
+}

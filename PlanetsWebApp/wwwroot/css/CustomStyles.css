@@ -1,0 +1,57 @@
+﻿body {
+    background-color:rgb(41 41 41);
+}
+
+.menu-top-bar {
+    border-radius: 4px;
+    font-weight: bold;
+    padding: 1%;
+    color: white;
+    background-color: rgb(56 89 134);
+}
+
+.menu-item {
+    color: white;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    text-decoration: none;
+}
+
+.menu-item:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.planet-item {
+    color: black;
+    border-radius: 4px;
+    background-color: rgb(113 168 206);
+    padding: 1%;
+    cursor: pointer;
+    padding-right: 10%;
+    margin-bottom: 1vh;
+}
+
+.planet-item:hover {
+    color: white;
+    background-color: rgb(56 89 134);
+}
+
+.planet-item-selected {
+    color: white;
+    border-radius: 4px;
+    background-color: rgb(56 89 134);
+    padding: 1%;
+    cursor: pointer;
+    padding-right: 10%;
+    margin-bottom: 1vh;
+}
+
+.planet-details {
+    color: black;
+    border-radius: 4px;
+    background-color: rgb(113 168 206);
+    display: none;
+    padding-left: 2%;
+    white-space: pre-line;
+}

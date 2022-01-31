@@ -1,0 +1,5 @@
+upgrade-assistant.clef
+startup.sh
+bin/
+obj/
+mssql/
