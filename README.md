@@ -19,7 +19,7 @@ runs as otherwise the code-first generation of the database will fail.
 
 Assuming either of the above methods have been used, open your browser and navigate to port 5000 to use the app.
 
-**Visual Studio & IIS**
+**Visual Studio & IIS:**
 The app can also be run by opening the solution in Visual Studio and running via IIS.
 This assumes you have SQL Server installed on your machine.
 Before running, open the appsettings.json file and in the ConnectionStrings section you will find two connection strings. Comment out this connection string:
